@@ -1,4 +1,7 @@
 export default {
   shape: '#FFF',
-  background: '#28A6E0',
+  background: '#F5F5F5',
+  gray: '#D3D3D3',
+  primary: '#F29229',
+  dark: '#000000',
 };

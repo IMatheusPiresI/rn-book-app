@@ -1,16 +1,21 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
 
+import { HeaderSearchWelcome } from '../../components/HeaderSearchWelcome';
+import { KeyboardDismiss } from '../../components/KeyboardDismiss';
+
 import * as S from './styles';
 
 export const Home = () => (
-  <S.Container>
-    <StatusBar
-      barStyle="light-content"
-      translucent
-      backgroundColor="transparent"
-    />
-
-    <S.Title>Hello World</S.Title>
-  </S.Container>
+  <KeyboardDismiss>
+    <S.Container>
+      <StatusBar
+        barStyle="dark-content"
+        translucent
+        backgroundColor="transparent"
+      />
+      <HeaderSearchWelcome />
+      <S.ContentBooks />
+    </S.Container>
+  </KeyboardDismiss>
 );
