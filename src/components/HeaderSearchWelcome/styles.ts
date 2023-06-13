@@ -7,6 +7,8 @@ export const Container = styled.View`
   align-items: center;
 `;
 
+export const ButtonOpacity = styled.TouchableOpacity``;
+
 export const WrapperInputIcon = styled.View`
   width: 100%;
   justify-content: center;
