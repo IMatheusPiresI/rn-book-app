@@ -1,11 +1,11 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components/native';
 
-import { Home } from './screens/Home';
 import theme from './resources/styles/theme';
+import { AppRoutes } from './routes';
 
 export const App = () => (
   <ThemeProvider theme={theme}>
-    <Home />
+    <AppRoutes />
   </ThemeProvider>
 );

@@ -5,4 +5,8 @@ export default {
   text: '#4F4F4F',
   primary: '#F29229',
   dark: '#000000',
+
+  transparent: {
+    dark_100: 'rgba(0,0,0,.1)',
+  },
 };

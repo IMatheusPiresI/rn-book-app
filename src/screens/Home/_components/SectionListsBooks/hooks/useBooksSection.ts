@@ -5,8 +5,10 @@ import { IBook } from '../../../../../services/books/types';
 
 type ISectionBooks = {
   fiction: IBook[];
-  biography: IBook[];
+  history: IBook[];
   novel: IBook[];
+  romance: IBook[];
+  education: IBook[];
 };
 export const useBooksSection = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -19,17 +21,26 @@ export const useBooksSection = () => {
     setLoading(true);
 
     try {
-      const [booksFiction, booksBiography, booksNovel] = await Promise.all([
+      const [
+        booksFiction,
+        booksHistory,
+        booksNovel,
+        booksRomance,
+        booksEducation,
+      ] = await Promise.all([
         await getBooksBySubject('Fiction'),
-        await getBooksBySubject('Biography'),
+        await getBooksBySubject('History'),
         await getBooksBySubject('Novel'),
-        await getBooksBySubject('Biography'),
+        await getBooksBySubject('Romance'),
+        await getBooksBySubject('education'),
       ]);
 
       setBooksSection({
         fiction: booksFiction.items,
-        biography: booksBiography.items,
+        history: booksHistory.items,
         novel: booksNovel.items,
+        romance: booksRomance.items,
+        education: booksEducation.items,
       });
 
       setError(false);

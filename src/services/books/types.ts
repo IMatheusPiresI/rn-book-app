@@ -7,6 +7,7 @@ type IBook = {
     title: string;
     authors: string[];
     publishedDate: string;
+    description: string;
     industryIdentifiers: [
       {
         type: string;
@@ -23,6 +24,7 @@ type IBook = {
     maturityRating: string;
     allowAnonLogging: boolean;
     contentVersion: string;
+    averageRating?: number;
     panelizationSummary: {
       containsEpubBubbles: boolean;
       containsImageBubbles: boolean;
