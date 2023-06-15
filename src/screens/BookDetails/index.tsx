@@ -44,11 +44,8 @@ export const BookDetails = () => {
 
   const openLinkReadBookWeb = () => {
     const url = book.volumeInfo.previewLink.replace('http', 'https');
-    console.log(url);
     Linking.openURL(url);
   };
-
-  console.log(book.volumeInfo.previewLink);
 
   return (
     <S.Container>
