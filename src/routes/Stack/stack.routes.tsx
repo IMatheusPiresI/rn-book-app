@@ -2,6 +2,7 @@ import { CardStyleInterpolators } from '@react-navigation/stack';
 import { createSharedElementStackNavigator } from 'react-navigation-shared-element';
 
 import { BookDetails } from '../../screens/BookDetails';
+import { BookSearch } from '../../screens/BookSearch';
 import { Home } from '../../screens/Home';
 
 const Stack = createSharedElementStackNavigator();
@@ -28,6 +29,19 @@ export const StackRoutes = () => (
       sharedElements={(route) => {
         const { book } = route.params;
         return [`item.${book.id}.image`];
+      }}
+    />
+    <Stack.Screen
+      name="BookSearch"
+      component={BookSearch}
+      options={{
+        cardStyleInterpolator: CardStyleInterpolators.forFadeFromCenter,
+        gestureEnabled: false,
+      }}
+      sharedElements={(_, otherRoute, showing) => {
+        if (otherRoute.name === 'Home' && showing) {
+          return [`item.search.input`];
+        }
       }}
     />
   </Stack.Navigator>

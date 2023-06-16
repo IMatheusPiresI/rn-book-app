@@ -5,6 +5,7 @@ export declare global {
     interface RootParamList {
       Home: undefined;
       BookDetails: { book: IBook };
+      BookSearch: undefined;
     }
   }
 }

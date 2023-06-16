@@ -1,11 +1,9 @@
-import { SharedValue } from 'react-native-reanimated';
+import { TouchableOpacityProps } from 'react-native';
 
 import { IBook } from '../../services/books/types';
 
 type IProps = {
   book: IBook;
-  index?: number;
-  scrollX?: SharedValue<number>;
-};
+} & TouchableOpacityProps;
 
 export type { IProps };

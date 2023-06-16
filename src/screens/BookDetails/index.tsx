@@ -59,15 +59,15 @@ export const BookDetails = () => {
             blurRadius={5}
           />
         </S.LimitBackgroundImage>
-        <S.WrapperGoBack>
-          <S.ButtonGoBack onPress={handleGoBack}>
+        <S.ButtonGoBack onPress={handleGoBack}>
+          <S.WrapperGoBack>
             <IconBase
               name="arrow-back"
               size={24}
               color={theme.colors.primary}
             />
-          </S.ButtonGoBack>
-        </S.WrapperGoBack>
+          </S.WrapperGoBack>
+        </S.ButtonGoBack>
         <S.BoxImage>
           <SharedElement id={`item.${book.id}.image`} style={styles.container}>
             <S.BookImage
@@ -116,6 +116,7 @@ export const BookDetails = () => {
           </S.HeaderContent>
           {book.volumeInfo?.description && (
             <S.ContentBook>
+              <S.TitleSection>Synopsis</S.TitleSection>
               <S.Descbook>{book.volumeInfo.description}</S.Descbook>
             </S.ContentBook>
           )}

@@ -8,15 +8,17 @@ import * as S from './styles';
 
 export const LoadingBooks: React.FC = () => (
   <S.LoadingContainer>
-    <LottieViewAnimation
-      source={LoadingBookAnimation}
-      autoPlay
-      loop
-      style={styles.animationLoading}
-    />
-    <S.BoxPositionMessageLoading>
-      <S.LoadingMessage>Loading Books...</S.LoadingMessage>
-    </S.BoxPositionMessageLoading>
+    <S.BoxAnimation>
+      <LottieViewAnimation
+        source={LoadingBookAnimation}
+        autoPlay
+        loop
+        style={styles.animationLoading}
+      />
+      <S.BoxPositionMessageLoading>
+        <S.LoadingMessage>Loading Books...</S.LoadingMessage>
+      </S.BoxPositionMessageLoading>
+    </S.BoxAnimation>
   </S.LoadingContainer>
 );
 

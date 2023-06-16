@@ -15,7 +15,11 @@ import { getBookImageURL } from '../../resources/utils/getBookImageURL';
 import { IProps } from './types';
 import * as S from './styles';
 
-export const CardBookList: React.FC<IProps> = ({ book, index, scrollX }) => {
+export const CardBookList: React.FC<IProps> = ({
+  book,
+  index = 0,
+  scrollX = { value: 0 },
+}) => {
   const navigation = useNavigation();
   const BOOK_WIDTH = theme.metrics.screenWidth * 0.32;
   const BOOK_SPACES = 16;
@@ -82,5 +86,6 @@ export const CardBookList: React.FC<IProps> = ({ book, index, scrollX }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    borderRadius: 12,
   },
 });

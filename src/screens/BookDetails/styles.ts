@@ -38,7 +38,7 @@ export const BoxImage = styled.View`
   height: ${({ theme }) => theme.metrics.screenHeight * 0.22}px;
   border-radius: 12px;
   elevation: 6;
-  background-color: transparent;
+  background-color: ${({ theme }) => theme.colors.gray};
   shadow-color: ${({ theme }) => theme.colors.dark};
   shadow-offset: 0px 2px;
   shadow-opacity: 0.2;
@@ -52,10 +52,8 @@ export const BookImage = styled.Image`
 `;
 
 export const WrapperGoBack = styled.View`
-  position: absolute;
-  top: 50px;
-  left: 20px;
   border-radius: 50px;
+  background-color: ${({ theme }) => theme.colors.shape};
   elevation: 6;
   shadow-color: ${({ theme }) => theme.colors.primary};
   shadow-offset: 0px 2px;
@@ -67,6 +65,9 @@ export const WrapperGoBack = styled.View`
 export const ButtonGoBack = styled.TouchableOpacity`
   width: 32px;
   height: 32px;
+  position: absolute;
+  top: 50px;
+  left: 20px;
   border-radius: 50px;
   background-color: ${({ theme }) => theme.colors.shape};
 
@@ -131,6 +132,14 @@ export const TitleBook = styled.Text`
   margin-bottom: 8px;
 `;
 
+export const TitleSection = styled.Text`
+  font-size: 18px;
+  font-weight: 700;
+  color: ${({ theme }) => theme.colors.primary};
+  line-height: 20px;
+  margin-bottom: 16px;
+`;
+
 export const AuthorName = styled.Text`
   font-size: 12px;
   font-weight: 700;
@@ -141,6 +150,7 @@ export const AuthorName = styled.Text`
 export const WrapperBookInfo = styled.View`
   width: 100%;
   height: 60px;
+  background-color: ${({ theme }) => theme.colors.background};
   border-width: 1px;
   border-color: ${({ theme }) => theme.colors.primary};
   border-radius: 200px;

@@ -1,15 +1,16 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import LottieViewAnimation from 'lottie-react-native';
-import { StyleSheet, TextInput } from 'react-native';
+import { StyleSheet } from 'react-native';
 import Animated, {
   Extrapolate,
   interpolate,
   useAnimatedStyle,
 } from 'react-native-reanimated';
+import { useNavigation } from '@react-navigation/native';
+import { SharedElement } from 'react-navigation-shared-element';
 
 import ReadBookWelcomeAnimation from '../../assets/animations/read-book.json';
-import theme from '../../resources/styles/theme';
-import { IconBase } from '../IconBase';
+import { InputSearch } from '../InputSearch';
 
 import * as S from './styles';
 import { IProps } from './types';
@@ -18,11 +19,10 @@ export const HeaderSearchWelcome: React.FC<IProps> = ({
   animatedScrollValue,
   headerHeight,
 }) => {
-  const [search, setSearch] = useState<string>('');
-  const searchRef = useRef<TextInput>(null);
+  const navigation = useNavigation();
 
-  const handleFocus = () => {
-    searchRef.current?.focus();
+  const handleGoToSearchScreen = () => {
+    navigation.navigate('BookSearch');
   };
 
   const rAnimatedHeight = useAnimatedStyle(() => ({
@@ -99,18 +99,11 @@ export const HeaderSearchWelcome: React.FC<IProps> = ({
         <S.TitleHeader>Search Your Book</S.TitleHeader>
       </S.WrapperTextSearchBook>
       <S.WrapperInputIcon style={rAnimatedPosition}>
-        <S.InputSearch
-          placeholderTextColor={theme.colors.gray}
-          placeholder="Search for the desired book"
-          value={search}
-          onChangeText={setSearch}
-          ref={searchRef}
-        />
-        <S.BoxIconPosition>
-          <S.ButtonOpacity onPress={handleFocus} activeOpacity={0.7}>
-            <IconBase name="menu-book" color={theme.colors.primary} size={32} />
-          </S.ButtonOpacity>
-        </S.BoxIconPosition>
+        <S.ButtonOpacity onPress={handleGoToSearchScreen} activeOpacity={0.7}>
+          <SharedElement id={`item.search.input`}>
+            <InputSearch pointerEvents="none" editable={false} />
+          </SharedElement>
+        </S.ButtonOpacity>
       </S.WrapperInputIcon>
     </S.Container>
   );

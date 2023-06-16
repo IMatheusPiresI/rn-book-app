@@ -16,3 +16,8 @@ export const BoxPositionMessageLoading = styled.View`
   position: absolute;
   top: 180px;
 `;
+
+export const BoxAnimation = styled.View`
+  align-items: center;
+  justify-content: center;
+`;
