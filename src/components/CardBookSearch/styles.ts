@@ -10,7 +10,7 @@ export const ButtonOpacity = styled.TouchableOpacity`
 
 export const Container = styled(Animated.View)`
   width: 100%;
-  height: ${({ theme }) => theme.metrics.screenHeight * 0.25}px;
+  height: ${({ theme }) => theme.metrics.screenHeight * 0.28}px;
 `;
 
 export const BoxImage = styled.View`

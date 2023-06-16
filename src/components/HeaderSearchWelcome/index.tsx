@@ -1,6 +1,6 @@
 import React from 'react';
 import LottieViewAnimation from 'lottie-react-native';
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet, TouchableOpacity } from 'react-native';
 import Animated, {
   Extrapolate,
   interpolate,
@@ -99,11 +99,20 @@ export const HeaderSearchWelcome: React.FC<IProps> = ({
         <S.TitleHeader>Search Your Book</S.TitleHeader>
       </S.WrapperTextSearchBook>
       <S.WrapperInputIcon style={rAnimatedPosition}>
-        <S.ButtonOpacity onPress={handleGoToSearchScreen} activeOpacity={0.7}>
-          <SharedElement id={`item.search.input`}>
-            <InputSearch pointerEvents="none" editable={false} />
-          </SharedElement>
-        </S.ButtonOpacity>
+        <S.BoxShadowInput>
+          <TouchableOpacity
+            onPress={handleGoToSearchScreen}
+            activeOpacity={0.7}
+          >
+            <SharedElement id={`item.search.input`}>
+              <InputSearch
+                pointerEvents="none"
+                disabled
+                editable={Platform.OS !== 'android'}
+              />
+            </SharedElement>
+          </TouchableOpacity>
+        </S.BoxShadowInput>
       </S.WrapperInputIcon>
     </S.Container>
   );

@@ -1,4 +1,5 @@
 import { CardStyleInterpolators } from '@react-navigation/stack';
+import { Platform } from 'react-native';
 import { createSharedElementStackNavigator } from 'react-navigation-shared-element';
 
 import { BookDetails } from '../../screens/BookDetails';
@@ -7,6 +8,14 @@ import { Home } from '../../screens/Home';
 
 const Stack = createSharedElementStackNavigator();
 
+const cardInterpolationAnimation = Platform.select({
+  android: {
+    animation: CardStyleInterpolators.forFadeFromBottomAndroid,
+  },
+  ios: {
+    animation: CardStyleInterpolators.forFadeFromCenter,
+  },
+});
 export const StackRoutes = () => (
   <Stack.Navigator
     screenOptions={{
@@ -35,7 +44,7 @@ export const StackRoutes = () => (
       name="BookSearch"
       component={BookSearch}
       options={{
-        cardStyleInterpolator: CardStyleInterpolators.forFadeFromCenter,
+        cardStyleInterpolator: cardInterpolationAnimation?.animation,
         gestureEnabled: false,
       }}
       sharedElements={(_, otherRoute, showing) => {

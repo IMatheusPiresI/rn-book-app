@@ -8,10 +8,10 @@ export const Container = styled(Animated.View)`
 export const ImageBook = styled.Image``;
 
 export const ContainerImage = styled.View`
-  elevation: 6;
   border-radius: 12px;
   overflow: hidden;
   background-color: ${({ theme }) => theme.colors.shape};
+  elevation: 6;
   shadow-color: ${({ theme }) => theme.colors.dark};
   shadow-offset: 0px 2px;
   shadow-opacity: 0.3;

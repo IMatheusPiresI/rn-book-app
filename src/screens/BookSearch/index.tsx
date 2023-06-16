@@ -63,57 +63,61 @@ export const BookSearch: React.FC = () => {
   );
 
   return (
-    <KeyboardDismiss>
-      <S.Container>
-        <S.Header>
-          <S.ButtonGoBack onPress={handleGoBack}>
-            <IconBase
-              name="arrow-back"
-              color={theme.colors.primary}
-              size={32}
-            />
-          </S.ButtonGoBack>
-          <S.TitleSearch>Search Your Book</S.TitleSearch>
-        </S.Header>
-        <S.WrapperSearch>
-          <SharedElement id="item.search.input">
-            <InputSearch
-              focusOnMount
-              value={search}
-              onChangeText={setSearch}
-              onBlur={getAllBooksWithQuery}
-            />
-          </SharedElement>
-        </S.WrapperSearch>
-        <S.Content>
-          {loading ? (
-            <LoadingBooks />
-          ) : error ? (
-            <ErrorSearchBooks />
-          ) : (
-            <S.ListBooksSearch
-              data={books}
-              numColumns={2}
-              contentContainerStyle={styles.contentList}
-              columnWrapperStyle={styles.columWrapper}
-              keyExtractor={(item) => item.id}
-              renderItem={renderItem}
-            />
-          )}
-        </S.Content>
-      </S.Container>
-    </KeyboardDismiss>
+    <S.Container>
+      <KeyboardDismiss>
+        <>
+          <S.Header>
+            <S.ButtonGoBack onPress={handleGoBack}>
+              <IconBase
+                name="arrow-back"
+                color={theme.colors.primary}
+                size={32}
+              />
+            </S.ButtonGoBack>
+            <S.TitleSearch>Search Your Book</S.TitleSearch>
+          </S.Header>
+          <S.WrapperSearch>
+            <SharedElement id="item.search.input">
+              <InputSearch
+                focusOnMount
+                value={search}
+                onChangeText={setSearch}
+                onBlur={getAllBooksWithQuery}
+              />
+            </SharedElement>
+          </S.WrapperSearch>
+          <S.Content>
+            {loading ? (
+              <LoadingBooks />
+            ) : error ? (
+              <ErrorSearchBooks />
+            ) : (
+              <S.ListBooksSearch
+                data={books}
+                numColumns={2}
+                contentContainerStyle={styles.contentList}
+                columnWrapperStyle={styles.columWrapper}
+                keyExtractor={(item) => item.id}
+                renderItem={renderItem}
+                maxToRenderPerBatch={12}
+                initialNumToRender={12}
+              />
+            )}
+          </S.Content>
+        </>
+      </KeyboardDismiss>
+    </S.Container>
   );
 };
 
 export const styles = StyleSheet.create({
   columWrapper: {
-    justifyContent: 'center',
-    columnGap: 20,
+    justifyContent: 'space-between',
   },
   contentList: {
     paddingTop: 20,
     paddingBottom: 40,
     paddingHorizontal: 20,
+    gap: 20,
   },
 });

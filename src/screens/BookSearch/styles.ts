@@ -34,6 +34,7 @@ export const WrapperSearch = styled.View`
 
 export const Content = styled.View`
   flex: 1;
+  margin-top: 10px;
 `;
 
 export const ListBooksSearch = styled(FlatList)`

@@ -10,6 +10,7 @@ import Animated, { useSharedValue } from 'react-native-reanimated';
 import { HeaderSearchWelcome } from '../../components/HeaderSearchWelcome';
 import { KeyboardDismiss } from '../../components/KeyboardDismiss';
 import theme from '../../resources/styles/theme';
+import { ButtonAccessMore } from '../../components/ButtonAccessMore';
 
 import { SectionListsBooks } from './_components/SectionListsBooks';
 import * as S from './styles';
@@ -43,6 +44,7 @@ export const Home = () => {
           >
             <SectionListsBooks />
           </Animated.ScrollView>
+          <ButtonAccessMore />
         </>
       </KeyboardDismiss>
     </S.Container>
@@ -57,5 +59,6 @@ const styles = StyleSheet.create({
 
   scrollViewContent: {
     paddingTop: 325,
+    paddingBottom: 80,
   },
 });

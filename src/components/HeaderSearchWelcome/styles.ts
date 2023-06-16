@@ -16,6 +16,7 @@ export const WrapperInputIcon = styled(Animated.View)`
   justify-content: center;
   position: absolute;
   bottom: 16px;
+  z-index: 99;
 `;
 
 export const WrapperTextSearchBook = styled(Animated.View)`
@@ -29,7 +30,7 @@ export const TitleHeader = styled.Text`
   color: ${({ theme }) => theme.colors.primary};
 `;
 
-export const ButtonOpacity = styled.TouchableOpacity`
+export const BoxShadowInput = styled.View`
   width: 100%;
   border-radius: 200px;
   background-color: ${({ theme }) => theme.colors.shape};
