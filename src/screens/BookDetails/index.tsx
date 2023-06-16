@@ -69,11 +69,13 @@ export const BookDetails = () => {
           </S.WrapperGoBack>
         </S.ButtonGoBack>
         <S.BoxImage>
-          <SharedElement id={`item.${book.id}.image`} style={styles.container}>
+          <SharedElement id={`item.${book.id}.image`}>
             <S.BookImage
               source={{
                 uri: getBookImageURL(book),
               }}
+              resizeMode="cover"
+              style={styles.imageBook}
             />
           </SharedElement>
         </S.BoxImage>
@@ -129,8 +131,10 @@ export const BookDetails = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+export const styles = StyleSheet.create({
+  imageBook: {
+    width: theme.metrics.screenWidth * 0.32,
+    height: theme.metrics.screenHeight * 0.22,
+    borderRadius: 12,
   },
 });

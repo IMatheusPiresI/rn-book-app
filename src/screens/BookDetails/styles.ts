@@ -34,8 +34,6 @@ export const BackgroundImage = styled.ImageBackground`
 `;
 
 export const BoxImage = styled.View`
-  width: ${({ theme }) => theme.metrics.screenWidth * 0.32}px;
-  height: ${({ theme }) => theme.metrics.screenHeight * 0.22}px;
   border-radius: 12px;
   elevation: 6;
   background-color: ${({ theme }) => theme.colors.gray};
@@ -45,11 +43,7 @@ export const BoxImage = styled.View`
   shadow-radius: 2px;
 `;
 
-export const BookImage = styled.Image`
-  width: 100%;
-  height: 100%;
-  border-radius: 12px;
-`;
+export const BookImage = styled.Image``;
 
 export const WrapperGoBack = styled.View`
   border-radius: 50px;

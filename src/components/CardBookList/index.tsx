@@ -65,19 +65,18 @@ export const CardBookList: React.FC<IProps> = ({
   return (
     <TouchableOpacity activeOpacity={0.8} onPress={handleGoToBookDetails}>
       <S.Container style={rAnimatedPerspectiveBook}>
-        <SharedElement id={`item.${book.id}.image`} style={styles.container}>
-          <S.ContainerImage>
+        <S.ContainerImage>
+          <SharedElement id={`item.${book.id}.image`} style={styles.container}>
             <S.ImageBook
               source={{
                 uri: getBookImageURL(book),
               }}
+              style={styles.imageBook}
               resizeMode="cover"
             />
-          </S.ContainerImage>
-        </SharedElement>
-        <S.BoxAuthor>
-          <S.Author numberOfLines={2}>{book.volumeInfo.title}</S.Author>
-        </S.BoxAuthor>
+          </SharedElement>
+        </S.ContainerImage>
+        <S.Title numberOfLines={1}>{book.volumeInfo.title}</S.Title>
       </S.Container>
     </TouchableOpacity>
   );
@@ -86,6 +85,11 @@ export const CardBookList: React.FC<IProps> = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    borderRadius: 12,
+  },
+  imageBook: {
+    width: theme.metrics.screenWidth * 0.32,
+    height: theme.metrics.screenHeight * 0.24,
     borderRadius: 12,
   },
 });
