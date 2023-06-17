@@ -2,20 +2,19 @@ import React from 'react';
 import {
   NativeScrollEvent,
   NativeSyntheticEvent,
-  StatusBar,
   StyleSheet,
 } from 'react-native';
 import Animated, { useSharedValue } from 'react-native-reanimated';
 
-import { HeaderSearchWelcome } from '../../components/HeaderSearchWelcome';
-import { KeyboardDismiss } from '../../components/KeyboardDismiss';
-import theme from '../../resources/styles/theme';
-import { ButtonAccessMore } from '../../components/ButtonAccessMore';
+import { HeaderSearchWelcome } from '../../../components/HeaderSearchWelcome';
+import { KeyboardDismiss } from '../../../components/KeyboardDismiss';
+import theme from '../../../resources/styles/theme';
+import { ButtonAccessMore } from '../../../components/ButtonAccessMore';
 
 import { SectionListsBooks } from './_components/SectionListsBooks';
 import * as S from './styles';
 
-export const Home = () => {
+const Home: React.FC = () => {
   const HEADER_HEIGHT = 325;
   const scrollY = useSharedValue(0);
 
@@ -27,11 +26,6 @@ export const Home = () => {
     <S.Container>
       <KeyboardDismiss>
         <>
-          <StatusBar
-            barStyle="dark-content"
-            translucent
-            backgroundColor="transparent"
-          />
           <HeaderSearchWelcome
             animatedScrollValue={scrollY}
             headerHeight={HEADER_HEIGHT}
@@ -50,6 +44,8 @@ export const Home = () => {
     </S.Container>
   );
 };
+
+export default Home;
 
 const styles = StyleSheet.create({
   scrollView: {

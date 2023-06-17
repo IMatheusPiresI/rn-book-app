@@ -1,6 +1,6 @@
 type IProps = {
   name: string;
-  size: number;
+  size?: number;
   color: string;
 };
 

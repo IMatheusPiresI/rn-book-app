@@ -11,14 +11,8 @@ export const ButtonOpacity = styled.TouchableOpacity`
 export const Container = styled(Animated.View)`
   width: 100%;
   height: ${({ theme }) => theme.metrics.screenHeight * 0.28}px;
-`;
-
-export const BoxImage = styled.View`
-  width: 100%;
-  height: 100%;
-  border-radius: 20px;
-  background: ${({ theme }) => theme.colors.shape};
   elevation: 6;
+  border-radius: 20px;
   background-color: ${({ theme }) => theme.colors.shape};
   shadow-color: ${({ theme }) => theme.colors.dark};
   shadow-offset: 0px 2px;
@@ -26,10 +20,16 @@ export const BoxImage = styled.View`
   shadow-radius: 4px;
 `;
 
-export const Image = styled.Image`
+export const BoxImage = styled.View`
   width: 100%;
   height: 100%;
   border-radius: 20px;
+  background-color: ${({ theme }) => theme.colors.shape};
+`;
+
+export const Image = styled.Image`
+  width: 100%;
+  height: 100%;
 `;
 
 export const TitleBook = styled.Text`

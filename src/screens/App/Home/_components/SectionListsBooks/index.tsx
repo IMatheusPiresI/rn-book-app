@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { ListBooks } from '../../../../components/ListBooks';
-import { LoadingBooks } from '../../../../components/LoadingBooks';
+import { ListBooks } from '../../../../../components/ListBooks';
+import { LoadingBooks } from '../../../../../components/LoadingBooks';
 
 import * as S from './styles';
 import { useBooksSection } from './hooks/useBooksSection';

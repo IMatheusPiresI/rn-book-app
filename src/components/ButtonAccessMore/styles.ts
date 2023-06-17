@@ -1,3 +1,4 @@
+import Animated from 'react-native-reanimated';
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
@@ -31,10 +32,8 @@ export const Content = styled.View`
   justify-content: center;
 `;
 
-export const BoxPositionAnimation = styled.View`
+export const BoxPositionAnimation = styled(Animated.View)`
   position: absolute;
-  bottom: 100px;
-  right: 80px;
   align-items: flex-end;
   justify-content: flex-end;
 `;

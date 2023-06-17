@@ -9,15 +9,16 @@ import {
 } from 'react-native-reanimated';
 import { SharedElement } from 'react-navigation-shared-element';
 
-import { IconBase } from '../../components/IconBase';
-import theme from '../../resources/styles/theme';
-import { formatDateEN } from '../../resources/utils/formatDateEN';
-import { getBookImageURL } from '../../resources/utils/getBookImageURL';
-import { IBook } from '../../services/books/types';
+import { IconBase } from '../../../components/IconBase';
+import { MoreOptionsDots } from '../../../components/MoreOptionsDots';
+import theme from '../../../resources/styles/theme';
+import { formatDateEN } from '../../../resources/utils/formatDateEN';
+import { getBookImageURL } from '../../../resources/utils/getBookImageURL';
+import { IBook } from '../../../services/books/types';
 
 import * as S from './styles';
 
-export const BookDetails = () => {
+const BookDetails: React.FC = () => {
   const HEADER_HEIGHT =
     theme.metrics.screenHeight * 0.3 + theme.metrics.statusBarHeight;
   const contentAnimation = useSharedValue(0);
@@ -68,6 +69,7 @@ export const BookDetails = () => {
             />
           </S.WrapperGoBack>
         </S.ButtonGoBack>
+        <MoreOptionsDots book={book} />
         <S.BoxImage>
           <SharedElement id={`item.${book.id}.image`}>
             <S.BookImage
@@ -130,6 +132,8 @@ export const BookDetails = () => {
     </S.Container>
   );
 };
+
+export default BookDetails;
 
 export const styles = StyleSheet.create({
   imageBook: {

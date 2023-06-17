@@ -3,19 +3,19 @@ import React, { useCallback, useState } from 'react';
 import { ListRenderItemInfo, StyleSheet } from 'react-native';
 import { SharedElement } from 'react-navigation-shared-element';
 
-import { CardBookSearch } from '../../components/CardBookSearch';
-import { ErrorSearchBooks } from '../../components/ErrorSearchBooks';
-import { IconBase } from '../../components/IconBase';
-import { InputSearch } from '../../components/InputSearch';
-import { KeyboardDismiss } from '../../components/KeyboardDismiss';
-import { LoadingBooks } from '../../components/LoadingBooks';
-import theme from '../../resources/styles/theme';
-import { getBooksByQuery } from '../../services/books';
-import { IBook } from '../../services/books/types';
+import { CardBookSearch } from '../../../components/CardBookSearch';
+import { ErrorSearchBooks } from '../../../components/ErrorSearchBooks';
+import { IconBase } from '../../../components/IconBase';
+import { InputSearch } from '../../../components/InputSearch';
+import { KeyboardDismiss } from '../../../components/KeyboardDismiss';
+import { LoadingBooks } from '../../../components/LoadingBooks';
+import theme from '../../../resources/styles/theme';
+import { getBooksByQuery } from '../../../services/books';
+import { IBook } from '../../../services/books/types';
 
 import * as S from './styles';
 
-export const BookSearch: React.FC = () => {
+const BookSearch: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
   const [books, setBooks] = useState<IBook[]>([]);
@@ -110,6 +110,7 @@ export const BookSearch: React.FC = () => {
   );
 };
 
+export default BookSearch;
 export const styles = StyleSheet.create({
   columWrapper: {
     justifyContent: 'space-between',

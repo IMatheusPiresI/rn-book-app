@@ -59,10 +59,10 @@ export const WrapperGoBack = styled.View`
 export const ButtonGoBack = styled.TouchableOpacity`
   width: 32px;
   height: 32px;
+  border-radius: 50px;
   position: absolute;
   top: 50px;
   left: 20px;
-  border-radius: 50px;
   background-color: ${({ theme }) => theme.colors.shape};
 
   align-items: center;
