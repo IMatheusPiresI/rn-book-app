@@ -1,4 +1,4 @@
-import { api } from '..';
+import { api } from '../api';
 
 export const getBooksBySubject = async (subject: string, maxResults = 40) => {
   const result = await api.get(

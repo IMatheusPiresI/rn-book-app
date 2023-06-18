@@ -1,4 +1,4 @@
-package com.rntemplateprojects.newarchitecture.modules;
+package com.book.devmath.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;

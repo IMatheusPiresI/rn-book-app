@@ -55,3 +55,15 @@ export const ButtonIconRight = styled.TouchableOpacity`
   position: absolute;
   right: 16px;
 `;
+
+export const ErrorBox = styled.View`
+  width: 100%;
+  margin-top: 4px;
+`;
+
+export const ErrorMessage = styled.Text`
+  font-size: 10px;
+  font-weight: 700;
+  opacity: 0.7;
+  color: ${({ theme }) => theme.colors.error};
+`;

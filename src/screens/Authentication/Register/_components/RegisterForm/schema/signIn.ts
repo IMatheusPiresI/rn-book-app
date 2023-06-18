@@ -5,6 +5,7 @@ export const registerSchema = Yup.object({
   email: Yup.string().required('Required field').email('E-mail not valid'),
   password: Yup.string()
     .required('Required field')
+    .min(6, 'Minimun 6 characters')
     .matches(
       /^(?=.*[A-Z]).{6,}$/,
       'Password must contain at least one uppercase letter',

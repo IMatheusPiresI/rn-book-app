@@ -1,9 +1,10 @@
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { KeyboardAvoidingView, Platform, StyleSheet } from 'react-native';
 
 import { ButtonSocial } from '../../../components/ButtonSocial';
 import { KeyboardDismiss } from '../../../components/KeyboardDismiss';
+import { googleConfigure } from '../../../services/firebase/auth';
 
 import * as S from './styles';
 import { LoginForm } from './_components/LoginForm';
@@ -14,6 +15,10 @@ const SignIn: React.FC = () => {
   const handleNavigateToRegister = () => {
     navigation.navigate('Register');
   };
+
+  useEffect(() => {
+    googleConfigure();
+  }, []);
 
   return (
     <KeyboardAvoidingView

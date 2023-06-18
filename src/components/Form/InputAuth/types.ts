@@ -7,6 +7,8 @@ type ITypeInput = {
 type IProps = {
   label: string;
   icon: string;
+  touched?: boolean;
+  error?: string;
 } & ITypeInput &
   TextInputProps;
 

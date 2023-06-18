@@ -7,7 +7,14 @@ import { IconBase } from '../../IconBase';
 import * as S from './styles';
 import { IProps } from './types';
 
-export const InputAuth: React.FC<IProps> = ({ icon, label, type, ...rest }) => {
+export const InputAuth: React.FC<IProps> = ({
+  icon,
+  label,
+  type,
+  touched,
+  error,
+  ...rest
+}) => {
   const [showPassword, setShowPassword] = useState<boolean>(
     type === 'password',
   );
@@ -20,6 +27,7 @@ export const InputAuth: React.FC<IProps> = ({ icon, label, type, ...rest }) => {
   const handleToogleShowPassword = () => {
     setShowPassword((prevState) => !prevState);
   };
+
   return (
     <S.Container>
       <S.Label>{label}</S.Label>
@@ -30,6 +38,7 @@ export const InputAuth: React.FC<IProps> = ({ icon, label, type, ...rest }) => {
           </S.ButtonIcon>
         </S.BoxIcon>
         <S.Input
+          autoCorrect={false}
           secureTextEntry={showPassword}
           {...rest}
           ref={inputRef}
@@ -45,6 +54,11 @@ export const InputAuth: React.FC<IProps> = ({ icon, label, type, ...rest }) => {
           </S.ButtonIconRight>
         )}
       </S.WrapperInput>
+      {touched && error && (
+        <S.ErrorBox>
+          <S.ErrorMessage>{error}</S.ErrorMessage>
+        </S.ErrorBox>
+      )}
     </S.Container>
   );
 };

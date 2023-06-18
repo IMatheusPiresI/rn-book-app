@@ -1,4 +1,4 @@
-package com.rntemplateprojects;
+package com.book.devmath;
 
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;

@@ -6,7 +6,7 @@ export default {
   text_light: '#9C9C9C',
   primary: '#F29229',
   dark: '#000000',
-
+  error: '#FF0000',
   transparent: {
     dark_100: 'rgba(0,0,0,.1)',
   },
