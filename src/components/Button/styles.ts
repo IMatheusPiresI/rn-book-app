@@ -1,17 +1,21 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 
-export const Container = styled.View`
+import { IDisabled } from './types';
+
+export const ButtonOpacity = styled.TouchableOpacity<IDisabled>`
   width: 100%;
-  height: 100%;
+  height: 50px;
   align-items: center;
   justify-content: center;
   background-color: ${({ theme }) => theme.colors.primary};
   border-radius: 12px;
-`;
 
-export const ButtonOpacity = styled.TouchableOpacity`
-  flex: 1;
-  height: 40px;
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      background-color: ${({ theme }) => theme.colors.text_light};
+      opacity: 0.6;
+    `}
 `;
 
 export const Label = styled.Text`

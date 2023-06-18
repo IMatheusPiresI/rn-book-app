@@ -30,14 +30,14 @@ export const StackAuthentication = () => (
       name="SignIn"
       component={SignIn}
       options={{
-        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+        cardStyleInterpolator: cardInterpolationAnimation?.animation,
       }}
     />
     <Stack.Screen
       name="Register"
       component={Register}
       options={{
-        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+        cardStyleInterpolator: cardInterpolationAnimation?.animation,
       }}
     />
   </Stack.Navigator>

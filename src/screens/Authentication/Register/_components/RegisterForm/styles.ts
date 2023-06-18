@@ -24,7 +24,7 @@ export const WrapperInputs = styled.View`
 `;
 
 export const BoxSpace = styled.View`
-  margin-top: 24px;
+  margin-top: 18px;
 `;
 
 export const WrapperForgotPassword = styled.View`

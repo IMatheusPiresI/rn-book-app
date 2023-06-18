@@ -1,7 +1,11 @@
 import { TouchableOpacityProps } from 'react-native';
 
+type IDisabled = {
+  disabled?: boolean;
+};
 type IProps = {
   label: string;
-} & TouchableOpacityProps;
+} & IDisabled &
+  TouchableOpacityProps;
 
-export type { IProps };
+export type { IProps, IDisabled };

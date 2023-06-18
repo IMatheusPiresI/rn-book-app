@@ -6,6 +6,8 @@ export declare global {
       Home: undefined;
       BookDetails: { book: IBook };
       BookSearch: undefined;
+      Register: undefined;
+      SignIn: undefined;
     }
   }
 }
