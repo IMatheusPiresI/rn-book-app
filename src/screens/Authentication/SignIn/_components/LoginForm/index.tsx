@@ -12,9 +12,13 @@ import { useUserStore } from '../../../../../store/user';
 
 import { signInSchema } from './schema/signIn';
 import * as S from './styles';
-import { ISignInForm } from './types';
+import { IProps, ISignInForm } from './types';
 
-export const LoginForm: React.FC = () => {
+export const LoginForm: React.FC<IProps> = ({
+  loadingGoogle,
+  loading,
+  setLoading,
+}) => {
   const { setUser } = useUserStore();
   const formik = useFormik<ISignInForm>({
     initialValues: {
@@ -27,6 +31,7 @@ export const LoginForm: React.FC = () => {
   });
 
   const handleSignIn = async (values: ISignInForm) => {
+    setLoading(true);
     try {
       const result = await loginWithEmailAndPassword(
         values.email,
@@ -38,6 +43,8 @@ export const LoginForm: React.FC = () => {
       const firebaseError = err as IFirebaseAuthError;
       const message = verifyMessageFirebaseAuthErrors(firebaseError.code);
       toastError(message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -55,6 +62,7 @@ export const LoginForm: React.FC = () => {
           onBlur={formik.handleBlur('email')}
           touched={formik.touched.email}
           error={formik.errors.email}
+          editable={!loading || !loadingGoogle}
         />
         <S.BoxSpace>
           <InputAuth
@@ -68,6 +76,7 @@ export const LoginForm: React.FC = () => {
             onBlur={formik.handleBlur('password')}
             touched={formik.touched.password}
             error={formik.errors.password}
+            editable={!loading || !loadingGoogle}
           />
         </S.BoxSpace>
       </S.WrapperInputs>
@@ -78,7 +87,8 @@ export const LoginForm: React.FC = () => {
       </S.WrapperForgotPassword>
       <Button
         label="Sign In"
-        disabled={!formik.isValid}
+        disabled={!formik.isValid || loading || loadingGoogle}
+        loading={loading}
         onPress={formik.handleSubmit}
       />
     </S.Container>

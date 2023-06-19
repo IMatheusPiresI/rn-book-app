@@ -1,3 +1,5 @@
+import React from 'react';
+
 type IRegisterForm = {
   name: string;
   email: string;
@@ -5,4 +7,9 @@ type IRegisterForm = {
   confirmPassword: string;
 };
 
-export type { IRegisterForm };
+type IProps = {
+  loadingGoogle: boolean;
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+};
+export type { IRegisterForm, IProps };

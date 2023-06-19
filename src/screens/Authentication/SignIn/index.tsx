@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { KeyboardAvoidingView, Platform, StyleSheet } from 'react-native';
 
 import { ButtonSocial } from '../../../components/ButtonSocial';
@@ -13,10 +13,22 @@ import * as S from './styles';
 import { LoginForm } from './_components/LoginForm';
 
 const SignIn: React.FC = () => {
+  const [loading, setLoading] = useState<boolean>(false);
+  const [loadingGoogle, setLoadingGoogle] = useState<boolean>(false);
   const navigation = useNavigation();
 
   const handleNavigateToRegister = () => {
     navigation.navigate('Register');
+  };
+
+  const handleSignInWithGoogle = async () => {
+    setLoadingGoogle(true);
+    try {
+      await signInOrRegisterWithGoogleProvider();
+      setLoadingGoogle(false);
+    } catch (err) {
+      setLoadingGoogle(false);
+    }
   };
 
   useEffect(() => {
@@ -34,17 +46,24 @@ const SignIn: React.FC = () => {
             <S.AppName>Bookth</S.AppName>
           </S.Header>
           <S.WrapperLoginBox>
-            <LoginForm />
+            <LoginForm
+              loadingGoogle={loadingGoogle}
+              loading={loading}
+              setLoading={setLoading}
+            />
             <S.WrapperSocialButton>
               <ButtonSocial
                 type="Google"
-                onPress={signInOrRegisterWithGoogleProvider}
+                onPress={handleSignInWithGoogle}
+                disabled={loadingGoogle || loading}
+                loading={loadingGoogle}
               />
             </S.WrapperSocialButton>
             <S.WrapperAlignRegister>
               <S.ButtonOpacity
                 activeOpacity={0.7}
                 onPress={handleNavigateToRegister}
+                disabled={loading || loadingGoogle}
               >
                 <S.MessageRegister>
                   Don&apos;t have an account?{' '}

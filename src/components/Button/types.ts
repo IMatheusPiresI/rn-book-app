@@ -5,6 +5,7 @@ type IDisabled = {
 };
 type IProps = {
   label: string;
+  loading?: boolean;
 } & IDisabled &
   TouchableOpacityProps;
 

@@ -1,6 +1,13 @@
+import React from 'react';
+
 type ISignInForm = {
   email: string;
   password: string;
 };
 
-export type { ISignInForm };
+type IProps = {
+  loadingGoogle: boolean;
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+};
+export type { ISignInForm, IProps };
