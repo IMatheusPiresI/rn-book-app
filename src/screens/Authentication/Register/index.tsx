@@ -6,13 +6,8 @@ import { ButtonSocial } from '../../../components/ButtonSocial';
 import { KeyboardDismiss } from '../../../components/KeyboardDismiss';
 import {
   googleConfigure,
-  loginWithGogleProvider,
+  signInOrRegisterWithGoogleProvider,
 } from '../../../services/firebase/auth';
-import {
-  checkUserExists,
-  createUserReferenceFirestore,
-  getUserById,
-} from '../../../services/firebase/firestore/user';
 
 import * as S from './styles';
 import { RegisterForm } from './_components/RegisterForm';
@@ -22,21 +17,6 @@ const Register: React.FC = () => {
 
   const handleNavigateToRegister = () => {
     navigation.navigate('SignIn');
-  };
-
-  const handleRegisterWithGoogle = async () => {
-    const userCredential = await loginWithGogleProvider();
-
-    const userExists = await checkUserExists(userCredential.id);
-    if (!userExists) {
-      await createUserReferenceFirestore(userCredential);
-      // TODO: set user with userCredential variable
-      return;
-    }
-
-    const user = await getUserById(userCredential.id);
-    console.log(user);
-    //TODO: set user with user
   };
 
   useEffect(() => {
@@ -56,7 +36,10 @@ const Register: React.FC = () => {
           <S.WrapperLoginBox>
             <RegisterForm />
             <S.WrapperSocialButton>
-              <ButtonSocial type="Google" onPress={handleRegisterWithGoogle} />
+              <ButtonSocial
+                type="Google"
+                onPress={signInOrRegisterWithGoogleProvider}
+              />
             </S.WrapperSocialButton>
             <S.WrapperAlignRegister>
               <S.ButtonOpacity

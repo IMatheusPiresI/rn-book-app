@@ -18,5 +18,7 @@ export const getUserById = async (id: string) => {
   const docRef = usersCollection.doc(id);
   const doc = await docRef.get();
 
-  return doc.data();
+  const dataUser = doc.data() as IUserReference;
+
+  return dataUser;
 };

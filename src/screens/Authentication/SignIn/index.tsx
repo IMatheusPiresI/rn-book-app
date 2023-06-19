@@ -4,7 +4,10 @@ import { KeyboardAvoidingView, Platform, StyleSheet } from 'react-native';
 
 import { ButtonSocial } from '../../../components/ButtonSocial';
 import { KeyboardDismiss } from '../../../components/KeyboardDismiss';
-import { googleConfigure } from '../../../services/firebase/auth';
+import {
+  googleConfigure,
+  signInOrRegisterWithGoogleProvider,
+} from '../../../services/firebase/auth';
 
 import * as S from './styles';
 import { LoginForm } from './_components/LoginForm';
@@ -33,7 +36,10 @@ const SignIn: React.FC = () => {
           <S.WrapperLoginBox>
             <LoginForm />
             <S.WrapperSocialButton>
-              <ButtonSocial type="Google" />
+              <ButtonSocial
+                type="Google"
+                onPress={signInOrRegisterWithGoogleProvider}
+              />
             </S.WrapperSocialButton>
             <S.WrapperAlignRegister>
               <S.ButtonOpacity

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { getBooksBySubject } from '../../../../../services/books';
-import { IBook } from '../../../../../services/books/types';
+import { getBooksBySubject } from '../../../../../../services/books';
+import { IBook } from '../../../../../../services/books/types';
 
 type ISectionBooks = {
   fiction: IBook[];

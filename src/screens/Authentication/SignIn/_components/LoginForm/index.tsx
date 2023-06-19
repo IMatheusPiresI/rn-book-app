@@ -8,12 +8,14 @@ import { verifyMessageFirebaseAuthErrors } from '../../../../../resources/utils/
 import { loginWithEmailAndPassword } from '../../../../../services/firebase/auth';
 import { IFirebaseAuthError } from '../../../../../services/firebase/auth/type';
 import { getUserById } from '../../../../../services/firebase/firestore/user';
+import { useUserStore } from '../../../../../store/user';
 
 import { signInSchema } from './schema/signIn';
 import * as S from './styles';
 import { ISignInForm } from './types';
 
 export const LoginForm: React.FC = () => {
+  const { setUser } = useUserStore();
   const formik = useFormik<ISignInForm>({
     initialValues: {
       email: '',
@@ -31,7 +33,7 @@ export const LoginForm: React.FC = () => {
         values.password,
       );
       const user = await getUserById(result.id);
-      console.log('user', user);
+      setUser(user);
     } catch (err) {
       const firebaseError = err as IFirebaseAuthError;
       const message = verifyMessageFirebaseAuthErrors(firebaseError.code);

@@ -2,10 +2,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { StatusBar } from 'react-native';
 
+import { useUserStore } from '../store/user';
+
 import { StackAppRoutes, StackAuthentication } from './Stack/stack.routes';
 
 export const AppRoutes = () => {
-  const user = false;
+  const { user } = useUserStore();
 
   return (
     <NavigationContainer>
@@ -14,7 +16,7 @@ export const AppRoutes = () => {
         translucent
         backgroundColor="transparent"
       />
-      {user ? <StackAppRoutes /> : <StackAuthentication />}
+      {user?.email ? <StackAppRoutes /> : <StackAuthentication />}
     </NavigationContainer>
   );
 };

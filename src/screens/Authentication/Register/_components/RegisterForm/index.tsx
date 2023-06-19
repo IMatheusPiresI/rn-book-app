@@ -9,12 +9,14 @@ import { registerWithEmailAndPassword } from '../../../../../services/firebase/a
 import { IFirebaseAuthError } from '../../../../../services/firebase/auth/type';
 import { createUserReferenceFirestore } from '../../../../../services/firebase/firestore/user';
 import { IUserReference } from '../../../../../services/firebase/firestore/user/types';
+import { useUserStore } from '../../../../../store/user';
 
 import { registerSchema } from './schema/signIn';
 import * as S from './styles';
 import { IRegisterForm } from './types';
 
 export const RegisterForm: React.FC = () => {
+  const { setUser } = useUserStore();
   const formik = useFormik<IRegisterForm>({
     initialValues: {
       name: '',
@@ -40,7 +42,7 @@ export const RegisterForm: React.FC = () => {
       };
 
       await createUserReferenceFirestore(userReference);
-      // TODO: set user with userReference
+      setUser(userReference);
     } catch (err) {
       const firebaseError = err as IFirebaseAuthError;
       const message = verifyMessageFirebaseAuthErrors(firebaseError.code);
