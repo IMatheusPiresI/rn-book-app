@@ -70,7 +70,6 @@ const Shuffle: React.FC = () => {
 
   const getQuery = (values: Record<string, string>) => {
     let query = '';
-    console.log('values', values);
 
     if (values?.Text) {
       query += values.Text;
@@ -80,7 +79,6 @@ const Shuffle: React.FC = () => {
     }
     if (values?.Author) {
       query += `+inauthor:${values.Author}`;
-      console.log('euu');
     }
     if (values?.Categorie) {
       query += `+subject:${values.Categorie}`;
@@ -151,6 +149,10 @@ const Shuffle: React.FC = () => {
             <S.TitleSearch>Shuffle</S.TitleSearch>
           </S.Header>
           <S.ContentScroll showsVerticalScrollIndicator={false}>
+            <S.Message>
+              Set up your filters to search and raffle books that are more
+              likely to find books that you might like.
+            </S.Message>
             <S.Label>Shuffle by:</S.Label>
             <S.WrapperOptions>
               {optionsShuffle.map((optionTitle) => (

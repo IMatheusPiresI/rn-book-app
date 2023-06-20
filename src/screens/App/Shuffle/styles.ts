@@ -35,6 +35,14 @@ export const ContentScroll = styled.ScrollView.attrs({
   margin-top: 10px;
 `;
 
+export const Message = styled.Text`
+  font-size: 16px;
+  font-weight: 500;
+  color: ${({ theme }) => theme.colors.primary};
+  margin: 0px 20px 20px 20px;
+  line-height: 22px;
+`;
+
 export const Label = styled.Text`
   width: 100%;
   font-size: 20px;
