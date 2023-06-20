@@ -49,6 +49,7 @@ export const MoreOptionsDots: React.FC<IProps> = ({ book }) => {
       url: getBookImageURL(book),
       message: `Acesse o preview do livro pelo link ${book.volumeInfo.previewLink}`,
     });
+    handleCloseOptions();
   };
 
   const rAnimateBoxOptions = useAnimatedStyle(() => ({

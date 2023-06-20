@@ -1,4 +1,6 @@
-import firestore from '@react-native-firebase/firestore';
+import firestore, { firebase } from '@react-native-firebase/firestore';
+
+import { IBook } from '../../../books/types';
 
 import { IUserReference } from './types';
 
@@ -21,4 +23,20 @@ export const getUserById = async (id: string) => {
   const dataUser = doc.data() as IUserReference;
 
   return dataUser;
+};
+
+export const addBookToFavorites = async (userId: string, book: IBook) => {
+  const docRef = usersCollection.doc(userId);
+
+  await docRef.update({
+    favorites: firebase.firestore.FieldValue.arrayUnion(book),
+  });
+};
+
+export const removeBookToFavorites = async (userId: string, book: IBook) => {
+  const docRef = usersCollection.doc(userId);
+
+  await docRef.update({
+    favorites: firebase.firestore.FieldValue.arrayRemove(book),
+  });
 };

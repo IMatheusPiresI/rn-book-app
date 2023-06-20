@@ -48,6 +48,10 @@ export const OptionContainer = styled.View`
   align-items: center;
 `;
 
+export const OptionLogout = styled(OptionContainer)`
+  background-color: ${({ theme }) => theme.colors.error};
+`;
+
 export const SpaceContainer = styled.View`
   margin: 20px 0;
 `;

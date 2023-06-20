@@ -4,7 +4,9 @@ import { createSharedElementStackNavigator } from 'react-navigation-shared-eleme
 
 import BookDetails from '../../screens/App/BookDetails';
 import BookSearch from '../../screens/App/BookSearch';
+import Favorites from '../../screens/App/Favorites';
 import Home from '../../screens/App/Home';
+import Shuffle from '../../screens/App/Shuffle';
 import Register from '../../screens/Authentication/Register';
 import SignIn from '../../screens/Authentication/SignIn';
 
@@ -78,6 +80,22 @@ export const StackAppRoutes = () => (
         if (otherRoute.name === 'Home' && showing) {
           return [`item.search.input`];
         }
+      }}
+    />
+    <Stack.Screen
+      name="Favorites"
+      component={Favorites}
+      options={{
+        cardStyleInterpolator: cardInterpolationAnimation?.animation,
+        gestureEnabled: false,
+      }}
+    />
+    <Stack.Screen
+      name="Shuffle"
+      component={Shuffle}
+      options={{
+        cardStyleInterpolator: cardInterpolationAnimation?.animation,
+        gestureEnabled: false,
       }}
     />
   </Stack.Navigator>

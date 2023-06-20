@@ -1,5 +1,5 @@
 import { useNavigation, useRoute } from '@react-navigation/native';
-import React, { useLayoutEffect } from 'react';
+import React, { ReactNode, useLayoutEffect } from 'react';
 import { Linking, StyleSheet } from 'react-native';
 import {
   interpolate,
@@ -15,8 +15,13 @@ import theme from '../../../resources/styles/theme';
 import { formatDateEN } from '../../../resources/utils/formatDateEN';
 import { getBookImageURL } from '../../../resources/utils/getBookImageURL';
 import { IBook } from '../../../services/books/types';
+import { useUserStore } from '../../../store/user';
 
 import * as S from './styles';
+
+type IProviderImage = {
+  children: ReactNode;
+};
 
 const BookDetails: React.FC = () => {
   const HEADER_HEIGHT =
@@ -24,7 +29,13 @@ const BookDetails: React.FC = () => {
   const contentAnimation = useSharedValue(0);
   const navigation = useNavigation();
   const route = useRoute();
-  const { book } = route.params as { book: IBook };
+  const { book, favoritePage } = route.params as {
+    book: IBook;
+    favoritePage?: boolean;
+  };
+  const {
+    user: { favorites },
+  } = useUserStore();
 
   const handleGoBack = () => {
     navigation.goBack();
@@ -46,6 +57,17 @@ const BookDetails: React.FC = () => {
   const openLinkReadBookWeb = () => {
     const url = book.volumeInfo.previewLink.replace('http', 'https');
     Linking.openURL(url);
+  };
+
+  const ProviderImage = ({ children }: IProviderImage) => {
+    const bookExists = favorites?.some((b) => b.id === book.id);
+
+    if (bookExists || !favoritePage) {
+      return (
+        <SharedElement id={`item.${book.id}.image`}>{children}</SharedElement>
+      );
+    }
+    return <>{children}</>;
   };
 
   return (
@@ -71,7 +93,7 @@ const BookDetails: React.FC = () => {
         </S.ButtonGoBack>
         <MoreOptionsDots book={book} />
         <S.BoxImage>
-          <SharedElement id={`item.${book.id}.image`}>
+          <ProviderImage>
             <S.BookImage
               source={{
                 uri: getBookImageURL(book),
@@ -79,7 +101,7 @@ const BookDetails: React.FC = () => {
               resizeMode="cover"
               style={styles.imageBook}
             />
-          </SharedElement>
+          </ProviderImage>
         </S.BoxImage>
       </S.Header>
       <S.Content style={rAnimatedContent}>
