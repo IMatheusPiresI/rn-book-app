@@ -1,6 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { StatusBar } from 'react-native';
+import SplashScreen from 'react-native-splash-screen';
 
 import { useUserStore } from '../store/user';
 
@@ -10,7 +11,11 @@ export const AppRoutes = () => {
   const { user } = useUserStore();
 
   return (
-    <NavigationContainer>
+    <NavigationContainer
+      onReady={() => {
+        SplashScreen.hide();
+      }}
+    >
       <StatusBar
         barStyle="dark-content"
         translucent

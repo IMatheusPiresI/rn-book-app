@@ -67,11 +67,7 @@ const Favorites: React.FC = () => {
           {favorites && favorites.length > 0 ? (
             <>
               <S.WrapperSearch>
-                <InputSearch
-                  focusOnMount
-                  value={search}
-                  onChangeText={setSearch}
-                />
+                <InputSearch value={search} onChangeText={setSearch} />
               </S.WrapperSearch>
               <S.Content>
                 {search && filteredBooks ? (

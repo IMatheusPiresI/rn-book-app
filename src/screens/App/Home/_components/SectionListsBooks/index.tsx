@@ -7,7 +7,7 @@ import * as S from './styles';
 import { useBooksSection } from './hooks/useBooksSection';
 
 export const SectionListsBooks: React.FC = () => {
-  const { loading, booksSections } = useBooksSection();
+  const { error, loading, booksSections } = useBooksSection();
 
   const renderContent = () => {
     if (loading) {
@@ -16,11 +16,19 @@ export const SectionListsBooks: React.FC = () => {
 
     return (
       <S.Container>
-        <ListBooks title="Fiction" books={booksSections.fiction} />
-        <ListBooks title="History" books={booksSections.history} />
-        <ListBooks title="Novel" books={booksSections.novel} />
-        <ListBooks title="Romance" books={booksSections.romance} />
-        <ListBooks title="Education" books={booksSections.education} />
+        {error ? (
+          <S.ErrorContent>
+            <S.TitleError>Error on get books.</S.TitleError>
+          </S.ErrorContent>
+        ) : (
+          <>
+            <ListBooks title="Fiction" books={booksSections.fiction} />
+            <ListBooks title="History" books={booksSections.history} />
+            <ListBooks title="Novel" books={booksSections.novel} />
+            <ListBooks title="Romance" books={booksSections.romance} />
+            <ListBooks title="Education" books={booksSections.education} />
+          </>
+        )}
       </S.Container>
     );
   };

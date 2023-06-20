@@ -3,4 +3,7 @@ type IFirebaseAuthError = {
   message: string;
 };
 
-export type { IFirebaseAuthError };
+type IAuthStageChange = {
+  setInitializing: (value: false) => void;
+};
+export type { IFirebaseAuthError, IAuthStageChange };

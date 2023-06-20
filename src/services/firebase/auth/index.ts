@@ -11,7 +11,7 @@ import {
 } from '../firestore/user';
 import { IUserReference } from '../firestore/user/types';
 
-import { IFirebaseAuthError } from './type';
+import { IAuthStageChange, IFirebaseAuthError } from './type';
 
 export const loginWithEmailAndPassword = async (
   email: string,
@@ -44,19 +44,18 @@ export const registerWithEmailAndPassword = async (
 export const googleConfigure = () => {
   GoogleSignin.configure({
     webClientId: CLI_ID_GOOGLE,
+    forceCodeForRefreshToken: true,
   });
 };
 
 export const loginWithGogleProvider = async () => {
   // Check if your device supports Google Play
   await GoogleSignin.hasPlayServices();
-  // Get the users ID token
+
   const { idToken } = await GoogleSignin.signIn();
 
-  // Create a Google credential with the token
   const googleCredential = auth.GoogleAuthProvider.credential(idToken);
 
-  // Sign-in the user with the credential
   const result = await auth().signInWithCredential(googleCredential);
 
   const user: IUserReference = {
@@ -95,4 +94,22 @@ export const signInOrRegisterWithGoogleProvider = async () => {
 
     toastError('Authentication with Google error, try again!');
   }
+};
+
+export const authStageChange = async ({
+  setInitializing,
+}: IAuthStageChange) => {
+  auth().onAuthStateChanged(async (userCredential) => {
+    if (userCredential) {
+      console.log('com user');
+      const user = await getUserById(userCredential.uid);
+
+      useUserStore.setState({
+        user,
+      });
+      setInitializing(false);
+      return;
+    }
+    setInitializing(false);
+  });
 };
